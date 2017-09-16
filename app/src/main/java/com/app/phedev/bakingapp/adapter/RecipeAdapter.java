@@ -19,6 +19,12 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static com.app.phedev.bakingapp.activity.StepListActivity.INGREDIENT_DATA;
+import static com.app.phedev.bakingapp.activity.StepListActivity.STEP_DATA;
+
 /**
  * Created by phedev in 2017.
  */
@@ -64,17 +70,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        final TextView titles;
-        final TextView serving;
-        final ImageView imgRecipe;
+        @BindView(R.id.recipe_title)
+        TextView titles;
+        @BindView(R.id.recipe_servings)
+        TextView serving;
+        @BindView(R.id.recipe_image)
+        ImageView imgRecipe;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-
-            titles = (TextView)itemView.findViewById(R.id.recipe_title);
-            serving = (TextView)itemView.findViewById(R.id.recipe_servings);
-            imgRecipe = (ImageView)itemView.findViewById(R.id.recipe_image);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
@@ -84,12 +90,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             int pos = getAdapterPosition();
             Result recipe = recipeList.get(pos);
             Intent detailAct = new Intent(context, StepListActivity.class);
+            detailAct.putExtra(StepListActivity.TITLE_RECIPE, recipe.getName());
 
             ArrayList<Ingredient> ingredientsData = new ArrayList<>(recipe.getIngredients());
-            detailAct.putParcelableArrayListExtra("ingredients", ingredientsData);
+            detailAct.putParcelableArrayListExtra(INGREDIENT_DATA, ingredientsData);
 
             ArrayList<Step> stepData = new ArrayList<>(recipe.getSteps());
-            detailAct.putParcelableArrayListExtra("step", stepData);
+            detailAct.putParcelableArrayListExtra(STEP_DATA, stepData);
 
             context.startActivity(detailAct);
         }

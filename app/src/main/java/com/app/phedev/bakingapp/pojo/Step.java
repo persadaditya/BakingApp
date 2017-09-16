@@ -27,6 +27,7 @@ public class Step implements Parcelable{
     private String thumbnailURL;
 
     private Step(Parcel in) {
+        id = in.readInt();
         shortDescription = in.readString();
         description = in.readString();
         videoURL = in.readString();
@@ -92,6 +93,7 @@ public class Step implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
         parcel.writeString(shortDescription);
         parcel.writeString(description);
         parcel.writeString(videoURL);

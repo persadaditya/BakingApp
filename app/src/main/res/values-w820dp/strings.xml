@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="test">Only for the test</string>
+    <string name="steps">Steps</string>
+    <string name="widget">Add to Widget</string>
+    <string name="error_message">no internet connection detected</string>
 </resources>

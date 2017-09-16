@@ -16,23 +16,66 @@
     master/detail flow.
     
     -->
+<LinearLayout
+    android:layout_width="@dimen/item_width"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/activity_vertical_margin"
+    android:layout_marginRight="@dimen/activity_vertical_margin">
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sub_title"
+        android:text="@string/subtitle"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textSize="17sp"
+        android:textColor="@color/cardview_light_background"
+        android:background="@color/colorTextBackground"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/ingredient_list"
+        android:name="com.app.phedev.bakingapp.activity.StepListFragment"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.app.phedev.bakingapp.activity.StepListActivity"
+        tools:listitem="@layout/step_list_ingredient"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sub_title2"
+        android:text="@string/steps"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textSize="17sp"
+        android:textColor="@color/cardview_light_background"
+        android:background="@color/colorTextBackground"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/step_list"
         android:name="com.app.phedev.bakingapp.activity.StepListFragment"
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.app.phedev.bakingapp.activity.StepListActivity"
-        tools:listitem="@layout/step_list_content" />
+        tools:listitem="@layout/step_liststep" />
+</LinearLayout>
 
     <FrameLayout
-        android:id="@+id/step_detail_container"
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3" />
+        android:layout_weight="3"
+        tools:context="com.app.phedev.bakingapp.activity.DetailStepFragment" />
 
 </LinearLayout>

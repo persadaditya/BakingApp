@@ -25,6 +25,7 @@ public class Ingredient implements Parcelable{
     private Ingredient(Parcel in) {
         measure = in.readString();
         ingredient = in.readString();
+        quantity = in.readDouble();
     }
 
     public static final Creator<Ingredient> CREATOR = new Creator<Ingredient>() {
@@ -72,5 +73,6 @@ public class Ingredient implements Parcelable{
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(measure);
         parcel.writeString(ingredient);
+        parcel.writeDouble(quantity);
     }
 }
